@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111a2b"><title>Questões+ | Importador</title>
+<link rel="stylesheet" href="importador.css">
+</head>
+<body>
+<main class="wrap">
+<header><a href="../index.html">← Voltar ao Questões+</a><span>FERRAMENTA ADMINISTRATIVA</span></header>
+<h1>Importador de provas</h1>
+<p class="intro">Leia os PDFs, confira o texto extraído e monte um pacote revisado para o catálogo. Nada é publicado automaticamente.</p>
+<section class="panel">
+<h2>1. Arquivos da prova</h2>
+<div class="grid two">
+<label>PDF da prova<input id="examPdf" type="file" accept="application/pdf"></label>
+<label>PDF do gabarito<input id="keyPdf" type="file" accept="application/pdf"></label>
+</div>
+<div class="actions"><button id="readPdfs">Ler PDFs</button><span id="readStatus" role="status">Aguardando arquivos.</span></div>
+<p class="note">A leitura funciona em PDFs com texto selecionável. Documentos escaneados como imagem precisam de OCR e não serão interpretados nesta primeira versão.</p>
+</section>
+<section class="panel">
+<h2>2. Identificação da prova</h2>
+<div class="grid two">
+<label>Ano<input id="year" type="number" min="1900" max="2100" placeholder="Ex.: 2024"></label>
+<label>Banca<input id="board" maxlength="100" placeholder="Ex.: FGV"></label>
+<label>Órgão<input id="agency" maxlength="200" placeholder="Nome do órgão"></label>
+<label>Cargo<input id="role" maxlength="200" placeholder="Cargo da prova"></label>
+<label class="wide">Concurso / identificação da prova<input id="examName" maxlength="200" placeholder="Nome do concurso"></label>
+<label class="wide">Disciplina padrão<select id="discipline"><option>Português</option><option>Raciocínio Lógico</option><option>Informática</option><option>Direito Constitucional</option><option>Direito Administrativo</option><option>Conhecimentos Gerais</option></select></label>
+</div>
+</section>
+<section class="panel">
+<div class="section-head"><h2>3. Questões extraídas e revisadas</h2><button class="secondary" id="addQuestion">+ Adicionar questão</button></div>
+<div id="questions"></div>
+</section>
+<section class="panel">
+<h2>4. Texto extraído dos PDFs</h2>
+<p class="note">Use este conteúdo para conferir a extração. O gabarito identificado automaticamente é apenas uma sugestão e precisa ser comparado com a publicação oficial.</p>
+<div class="grid two">
+<label>Texto da prova<textarea id="examText" rows="12" placeholder="O texto da prova aparecerá aqui após a leitura."></textarea></label>
+<label>Texto do gabarito<textarea id="keyText" rows="12" placeholder="O texto do gabarito aparecerá aqui após a leitura."></textarea></label>
+</div>
+</section>
+<section class="panel">
+<h2>5. Origem e conferência</h2>
+<div class="grid two">
+<label>Link público da prova (opcional)<input id="sourceUrl" type="url" placeholder="https://..."></label>
+<label>Referência / página do gabarito<input id="keyReference" placeholder="Ex.: gabarito definitivo, página 2"></label>
+<label class="wide">Observações de revisão<textarea id="reviewNotes" rows="3" placeholder="Ex.: questão 12 anulada; conferir versão definitiva."></textarea></label>
+<label class="wide checkline"><input id="rightsConfirmed" type="checkbox"> Confirmei que tenho autorização ou fundamento válido para reproduzir o conteúdo integral destas questões no catálogo. Se não tiver certeza, não marque e não publique o pacote.</label>
+</div>
+<div class="actions"><button id="exportPack">Validar e gerar pacote JSON</button><span id="exportStatus" role="status"></span></div>
+</section>
+<footer>Questões+ · Importador experimental · Revisão humana obrigatória antes de publicar</footer>
+</main>
+<script type="module" src="importador.js"></script>
+</body></html>
